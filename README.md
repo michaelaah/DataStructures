@@ -1,2 +1,2 @@
 # MyDataStructures
-A collection of various data structures. 
+A collection of a LinkedList, Queue, and a Stack data structures.
