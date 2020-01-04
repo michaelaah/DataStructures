@@ -70,6 +70,5 @@ public class Main {
         System.out.println(theList);
         System.out.println("Head: " + theList.getHeadData());
         System.out.println("Tail: " + theList.getTailData());
-        */
     }
 }
