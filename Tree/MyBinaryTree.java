@@ -36,7 +36,7 @@ public class MyBinaryTree {
 
   /**
    * Sets the BinaryTree's value field to the parameter variable.
-   * @param o the value to store in the BinaryTree node
+   * @param o the value to store in a specific BinaryTree object
    */
   public void setValue(Object o){
     this.value = o;
