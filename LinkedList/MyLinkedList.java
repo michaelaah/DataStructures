@@ -137,6 +137,10 @@ public class MyLinkedList {
         public void setPrevious(Node previous){
             this.previous = previous;
         }
+        
+        public Object getData(){
+            return this.data;
+        }
 
         public Node getNext(){
             return this.next;
