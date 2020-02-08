@@ -158,6 +158,17 @@ public class MyBinaryTree {
 
     return 0;
   }
+  
+  /**
+   * The clear method assigns null values to all the BinaryTree instance
+   * variables.
+   */
+  public void clear(){
+    this.left = null;
+    this.right = null;
+    this.parent = null;
+    this.value = null;
+  }
 
   /**
    * The isEmpty method tests if the value field of a given BinaryTree object
