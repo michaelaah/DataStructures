@@ -44,7 +44,7 @@ public class MyBinaryTree {
 
   /**
    * The getValue method retrieves the value of a given BinaryTree object node.
-   * @return the specific BinaryTree node's value field
+   * @return the specific BinaryTree object's value field
    */
   public Object getValue(){
 
