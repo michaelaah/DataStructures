@@ -185,5 +185,40 @@ public class MyBinaryTree {
 
     return false;
   }
+  
+  /**
+   * The equals method determines if two Binary tree nodes are equal if
+   * their value class variables are equal.
+   * @param t the BinaryTree object to test for equality..
+   * @return True if the value instance variables of the two BinaryTree object's
+   * are equal false otherwise
+   */
+  public boolean equals(BinaryTree t){
+    if (this.value.equals(t.value)){
+      return true;
+    }
+
+    return false;
+  }
+
+  /**
+   * The toString method returns a string representation of an the BinaryTree
+   * object. Note: this method performs Inorder tree traversal.
+   * @return a string representation of a BinaryTree object
+   */
+  public String toString(){
+    String s = "";
+    if (this.left != null){
+      s += this.left.toString();
+    }
+    if (this.value != null){
+      s += this.value.toString() + " ";
+    }
+    if (this.right != null){
+      s += this.right.toString();
+    }
+
+    return s;
+  }
 
 }
