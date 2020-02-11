@@ -120,6 +120,40 @@ public class MyBinaryTree {
     return 1 + this.right.getSize() + this.left.getSize();
 
   }
+  
+    /**
+   * The isBalanced method returns true if the BinaryTree object has a
+   * difference in leaf nodes in each left and right subtree no greater than 1.
+   * Otherwise, this method returns false.
+   * @param t the BinaryTree object to test if it is balanced
+   * @return true if the BinaryTree object is balanced, false otherwise
+   */
+  public boolean isBalanced(MyBinaryTree t){
+    return isBalancedHelper(t) >= 0;
+  }
+
+  /**
+   * The isBalancedHelper method is a recursive helper method for the isBalanced
+   * method. THis method takes a BinaryTree object and returns an int
+   * representing the difference between the left and right subtrees.
+   * @param t a BinaryTree object
+   * @return the difference between the left and right subtrees
+   */
+  protected int isBalancedHelper(MyBinaryTree t){
+    if (t == null){
+      
+      return 0;
+    }
+    int lSide = isBalancedHelper(t.left);
+    int rSide = isBalancedHelper(t.right);
+    int difference = Math.abs(lSide - rSide);
+    if (lSide < 0 || rSide < 0 || difference > 1){
+      
+      return -1;
+    }
+    
+    return lSide + rSide + 1;
+  }
 
   /**
    * The getDepth method returns the depth of a given BinaryTree node within a
@@ -131,7 +165,7 @@ public class MyBinaryTree {
       return 0;
     }
     int count = 0;
-    BinaryTree temp = this.parent;
+    MyBinaryTree temp = this.parent;
     while (temp != null){
       count ++;
       temp = temp.parent;
