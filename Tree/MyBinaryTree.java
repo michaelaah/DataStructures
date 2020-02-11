@@ -1,6 +1,6 @@
 /**
  * This class implements a BinaryTree.
- * Note: this class does not support removal or order specific insertion.
+ * Note: this class does not support BinarySearch, removal, or order specific insertion.
  */
 public class MyBinaryTree {
 
