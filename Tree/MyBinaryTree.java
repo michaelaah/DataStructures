@@ -55,7 +55,7 @@ public class MyBinaryTree {
    * The getLeft method returns the BinaryTree object's left child reference.
    * @return left child reference of a BinaryTree object
    */
-  public BinaryTree getLeft() {
+  public MyBinaryTree getLeft() {
 
     return left;
   }
@@ -64,7 +64,7 @@ public class MyBinaryTree {
    * The getRight method returns the BinaryTree object's right child reference.
    * @return right child reference of a BinaryTree object
    */
-  public BinaryTree getRight() {
+  public MyBinaryTree getRight() {
 
     return right;
   }
@@ -73,7 +73,7 @@ public class MyBinaryTree {
    * The getParent method returns the BinaryTree object's parent reference.
    * @return parent reference of a BinaryTree object
    */
-  public BinaryTree getParent(){
+  public MyBinaryTree getParent(){
 
     return this.parent;
   }
