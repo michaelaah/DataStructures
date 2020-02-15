@@ -150,6 +150,15 @@ public class MyLinkedList {
         }
         return result;
     }
+    
+    /**
+     * The clear method sets the head and tail references of the LinkedList
+     * object to null and therefore, erasing clearing the entire list.
+     */
+    public void clear(){
+        this.head = null;
+        this.tail = null;
+    }
 
     // Nested Node class
     private class Node{
