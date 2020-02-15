@@ -30,4 +30,8 @@ public class MyQueue {
         }
         return result;
     }
+    
+    public void clear(){
+        this.theQueue.clear();
+    }
 }
