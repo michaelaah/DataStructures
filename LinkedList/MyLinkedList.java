@@ -65,9 +65,15 @@ public class MyLinkedList {
         return false;
     }
 
+  /**
+     * The addLast method adds an new node with a given parameter at the end
+     * of the LinkedList object.
+     * @param data The value to be added to the end of the LinkedList object
+     * @return True if the value was added successfully, otherwise false
+     */
     public boolean addLast(Object data){
+        Node newNode = new Node(data);
         if(tail == null){
-            Node newNode = new Node(data);
             tail = newNode;
             if(head == null){
                 head = newNode;
@@ -75,7 +81,6 @@ public class MyLinkedList {
             return true;
         }
         if(tail.getNext() == null){
-            Node newNode = new Node(data);
             newNode.setPrevious(tail);
             tail.setNext(newNode);
             tail = tail.getNext();
@@ -84,6 +89,11 @@ public class MyLinkedList {
         return false;
     }
 
+    /**
+     * The removeFirst method removes a node from the front of the LinkedList
+     * object and returns that node to the client.
+     * @return The node at the front of the Linkedlist object
+     */
     public Node removeFirst(){
         if(head == null){
             return null;
@@ -100,6 +110,11 @@ public class MyLinkedList {
         return temp;
     }
 
+     /**
+     * The removeLast method removes a node from the back of the LinkedList
+     * object and returns that node to the client.
+     * @return The node at the back of the Linkedlist object
+     */
     public Node removeLast(){
         if(tail == null){
             return null;
@@ -117,6 +132,11 @@ public class MyLinkedList {
         return temp;
     }
 
+    /**
+     * The toString method provides a String representation of the LinkedList
+     * object.
+     * @return A String representation of the LinkedList object
+     */
     public String toString() {
         String result = "";
         if (head != null) {
