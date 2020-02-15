@@ -31,5 +31,9 @@ public class MyStack {
         }
         return result;
     }
+    
+    public void clear(){
+        this.theStack.clear();
+    }
 
 }
