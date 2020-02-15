@@ -2,36 +2,60 @@
 
 public class MyLinkedList {
 
+    // MyLinkedList class instance variables
     private Node head;
     private Node tail;
 
+    /**
+     * No argument MyLinkedList constructor, sets the head and tail references
+     * to null.
+     */
     public MyLinkedList(){
         head = null;
         tail = null;
     }
 
+    /**
+     * The getHeadData returns the data stored in the head node.
+     * @return the data stored in the head reference instance variable
+     */
     public Object getHeadData(){
         return this.head.data;
     }
 
+    /**
+     * The getTailData returns the data stored in the tail node.
+     * @return the data stored in the tail reference instance variable
+     */
     public Object getTailData(){
         return this.tail.data;
     }
 
+    /**
+     * The isEmpty method returns true if both the head and tail references 
+     * are null, other wise it returns false
+     * @return true if class instance variables are null, otherwise false
+     */
     public boolean isEmpty(){
         return (head == null && tail == null);
     }
 
+     /**
+     * The addFirst method adds a new node to the front of the LinskedList
+     * object.
+     * @param data The value of the new node to be stored in the LinkedList
+     * object.
+     * @return True if the node was successfully added, false otherwise
+     */
     public boolean addFirst(Object data){
+        Node newNode = new Node(data);
         if(head != null) {
-            Node newNode = new Node(data);
             newNode.next = head;
             head.previous = newNode;
             head = newNode;
             return true;
         }
         if(head == null){
-            Node newNode = new Node(data);
             head = newNode;
             if (tail == null){
                 tail = newNode;
