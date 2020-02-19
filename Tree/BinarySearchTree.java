@@ -328,6 +328,11 @@ public class BinarySearchTree {
 
   }
 
+    /**
+   * The removeNode method removes the parameter variable from the
+   * BinarySearchTree and replaces it with an appropriate node reference.
+   * @param r the node to remove from the BinarySearchTree
+   */
   private void removeNode(BinarySearchTree r){
     BinarySearchTree n = new BinarySearchTree();
     if (r.left == null){
@@ -353,6 +358,13 @@ public class BinarySearchTree {
 
   }
 
+    /**
+   * The findReplace method searches for a an appropriate replacement, to
+   * maintain order in the BinarySearchTree and adjusts the pointer accordingly.
+   * @param n the node to search for a replacement for
+   * @return a node reference variable to the node to be used to replace with
+   * the parameter reference variable with
+   */
   private BinarySearchTree findReplace(BinarySearchTree n){
     n = n.right;
     while (n.left != null) {
