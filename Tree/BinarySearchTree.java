@@ -249,6 +249,41 @@ public class BinarySearchTree {
 
     return 0;
   }
+  
+    /**
+   * The isBST method returns a boolean value to the client, true if the BST
+   * is in sorted order, meaning that the left subtree is < the parent and that
+   * the right subtree is > the parent, else false is returned.
+   * @return true if the data elements are in the tree in sorted order, false
+   * otherwise
+   */
+  public boolean isBST(){
+    int low = Integer.MIN_VALUE;
+    int high = Integer.MAX_VALUE;
+
+    return isBSTHelper(this, low, high);
+  }
+
+  /**
+   * The isBSTHelper method implements the logic described in the isBST method
+   * but takes a node, a maximum, and a minimum value as parameters.
+   * @param T The node to test if it is a BST or not
+   * @param low the lowest possible value
+   * @param high the highest possible value
+   * @returntrue if the data elements are in the tree in sorted order, false
+   *    * otherwise
+   */
+  public boolean isBSTHelper(BinarySearchTree T, int low, int high){
+    if (T == null){
+      return true;
+    }
+    if (T.value < low || T.value > high){
+      System.out.println("Failed here");
+      return false;
+    }
+
+      return isBSTHelper(T.left, low, T.value) && isBSTHelper(T.right, T.value, high);
+  }
 
   /**
    * The findNode helper method searches the BinarySearchTree for the value
