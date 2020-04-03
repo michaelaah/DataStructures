@@ -162,6 +162,41 @@ public class HashTable {
       throw new NoSuchElementException();
     }
   }
+  
+  /**
+   * The containsKey method returns true of the HashTable object contains the
+   * key parameter variable.
+   * @param key The key to search for in the HashTable
+   * @return True if the key is found within the HashTable, false otherwise
+   */
+  public boolean containsKey(String key){
+    for (Object o: this.bucketArray) {
+      Mapping item = (Mapping) o;
+      if (item != null) {
+        if (item.key.equals(key)) {
+          return true;
+        }
+        if (item.next != null) {
+          while (item.next != null) {
+            item = item.next;
+            if (item.key.equals(key)) {
+              return true;
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  /**
+   * The clear function assigns all indexes in the bucketArray variable to null.
+   */
+  public void clear(){
+    for (int i = 0; i < this.size; i++) {
+      this.bucketArray[i] = null;
+    }
+  }
 
   /**
    * The overLoad function determines if the current HashTable object is over
