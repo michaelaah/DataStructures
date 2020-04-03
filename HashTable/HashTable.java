@@ -249,16 +249,20 @@ public class HashTable {
     return true;
   }
 
+  /**
+   * The toString method returns a String representation of the HashTable object.
+   * @return A String representation of the HashTable object.
+   */
   public String toString(){
     String result = "";
     for (Object o: this.bucketArray){
       Mapping item = (Mapping) o;
       if (item != null){
-        result += item.key + " " + item.value + "\n";
+        result += "Key: " + item.key + " | Value: " + item.value + "\n";
         if (item.next != null){
           while (item.next != null){
             item = item.next;
-            result += item.key + " " + item.value + " at index: " + "\n";
+            result += "Key: " + item.key + " | Value: " + item.value + "\n";
           }
         }
       }
