@@ -71,22 +71,29 @@ public class HashTable {
     if (overLoad()){
       reHash();
     }
+    
     int index = hash(key);
     Mapping elem = new Mapping(key, value);
+    
     if (bucketArray[index] == null) {
       bucketArray[index] = elem;
     } else {
+      
       Mapping temp = (Mapping) bucketArray[index];
       if (temp.next == null){
         temp.next = elem;
       } else {
+        
         while (temp.next != null){
           temp = temp.next;
         }
+        
         temp.next = elem;
       }
     }
+    
     count++;
+    
     if (overLoad()){
       reHash();
     }
@@ -99,17 +106,23 @@ public class HashTable {
    */
   public void remove(String key) {
     Mapping elem = (Mapping) bucketArray[hash(key)];
+    
     if (elem.key.equals(key)) {
+      
       if (elem.next == null) {
         bucketArray[hash(key)] = null;
       } else {
         bucketArray[hash(key)] = elem.next;
       }
+      
     } else {
+      
       if (elem.next.key.equals(key)){
         elem.next = elem.next.next;
       }
+      
       while (elem.next != null) {
+        
         if (elem.next.key.equals(key)){
           if (elem.next.next != null){
             elem.next = elem.next.next;
@@ -119,7 +132,9 @@ public class HashTable {
         } else {
           elem = elem.next;
         }
+        
       }
+      
     }
     count--;
   }
