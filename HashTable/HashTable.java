@@ -6,6 +6,8 @@
  * tuple (key, value) relationship.
  */
 
+import javax.management.openmbean.KeyAlreadyExistsException;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
@@ -39,6 +41,7 @@ public class HashTable {
   private int size;
   private int count;
   private Object[] bucketArray;
+  private ArrayList<String> keyList;
 
   /**
    * The HashTable constructor returns an instance of a HashTable object and
@@ -48,6 +51,7 @@ public class HashTable {
     this.count = 0;
     this.size = 19;     // Assigning instance variable to prime number nineteen.
     this.bucketArray = new Object[this.size];
+    this.keyList = new ArrayList<String>();
   }
 
   /**
@@ -68,34 +72,32 @@ public class HashTable {
    * @param value The value to store in the hashTable object
    */
   public void put(String key, int value) {
-    if (overLoad()){
-      reHash();
-    }
-    
-    int index = hash(key);
-    Mapping elem = new Mapping(key, value);
-    
-    if (bucketArray[index] == null) {
-      bucketArray[index] = elem;
+    this.keyList.add(key);
+    if (hasDuplicates()){
+      throw new KeyAlreadyExistsException();
     } else {
-      
-      Mapping temp = (Mapping) bucketArray[index];
-      if (temp.next == null){
-        temp.next = elem;
-      } else {
-        
-        while (temp.next != null){
-          temp = temp.next;
-        }
-        
-        temp.next = elem;
+      if (overLoad()) {
+        reHash();
       }
-    }
-    
-    count++;
-    
-    if (overLoad()){
-      reHash();
+      int index = hash(key);
+      Mapping elem = new Mapping(key, value);
+      if (bucketArray[index] == null) {
+        bucketArray[index] = elem;
+      } else {
+        Mapping temp = (Mapping) bucketArray[index];
+        if (temp.next == null) {
+          temp.next = elem;
+        } else {
+          while (temp.next != null) {
+            temp = temp.next;
+          }
+          temp.next = elem;
+        }
+      }
+      count++;
+      if (overLoad()) {
+        reHash();
+      }
     }
   }
 
@@ -106,23 +108,19 @@ public class HashTable {
    */
   public void remove(String key) {
     Mapping elem = (Mapping) bucketArray[hash(key)];
-    
     if (elem.key.equals(key)) {
-      
+      this.keyList.remove(key);
       if (elem.next == null) {
         bucketArray[hash(key)] = null;
       } else {
         bucketArray[hash(key)] = elem.next;
       }
-      
     } else {
-      
-      if (elem.next.key.equals(key)){
+      this.keyList.remove(key);
+      if (elem.next != null && elem.next.key.equals(key)){
         elem.next = elem.next.next;
       }
-      
       while (elem.next != null) {
-        
         if (elem.next.key.equals(key)){
           if (elem.next.next != null){
             elem.next = elem.next.next;
@@ -132,9 +130,7 @@ public class HashTable {
         } else {
           elem = elem.next;
         }
-        
       }
-      
     }
     count--;
   }
@@ -196,6 +192,15 @@ public class HashTable {
     for (int i = 0; i < this.size; i++) {
       this.bucketArray[i] = null;
     }
+  }
+  
+  /**
+   * The get keyList method returns a list of all the keys in the HashTable.
+   * @return An arrayList of every key in the HashTable object
+   */
+  public ArrayList<String> getKeyList(){
+    
+    return this.keyList;
   }
 
   /**
@@ -299,6 +304,26 @@ public class HashTable {
     return true;
   }
 
+  /**
+   * The hasDuplicates method searches the keyList ArrayList to see if a
+   * duplicate key exists.
+   * @return True if a duplicate key exists, otherwise false is returned
+   */
+  private boolean hasDuplicates(){
+    if(this.keyList.size() > 1) {
+      for (int i = 0; i < this.keyList.size(); i++) {
+        String first = this.keyList.get(i);
+        for (int j = i + 1; j < this.keyList.size(); j++) {
+          String second = this.keyList.get(j);
+          if (first.equals(second)) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
   /**
    * The toString method returns a String representation of the HashTable object.
    * @return A String representation of the HashTable object.
