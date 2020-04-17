@@ -16,9 +16,8 @@ public class Graph {
   private HashMap<Vertex, LinkedList<Vertex>> adjacencyList;
   private int size;             // Declaring a private int size class variable.
 
-  /**
-   * The Graph constructor instantiates and returns a reference of the Graph
-   * object to the client.
+  /*
+   * Graph constructor.
    */
   public Graph(){
     /*
@@ -134,7 +133,6 @@ public class Graph {
       LinkedList<Vertex> vertexList = this.adjacencyList.get(v);
       vertexList.remove(x);
     }
-
     /*
      * Remove the x parameter variable from the HashMap itself and decrement
      * the size class variable.
