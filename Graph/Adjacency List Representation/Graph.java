@@ -1,6 +1,7 @@
 /**
  * The Graph class implements the behavior of a Graph data structure.
  * This Graph implements an adjacency list structure and uses Vertex objects.
+ * Note: This class implements an undirected Graph structure.
  */
 import javax.management.openmbean.KeyAlreadyExistsException;
 import java.util.*;
