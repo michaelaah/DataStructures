@@ -361,7 +361,7 @@ public class Graph {
     }
     String result = "";         // Instantiating an empty String to append to.
     for (int i = 0; i < componentList.size(); i++) {
-      result += (i+1) + ": " + componentList.get(i) + "\n";
+      result += (i + 1) + ": " + componentList.get(i) + "\n";
     }
 
     // Reset all Vertex object's visited filed to false.
