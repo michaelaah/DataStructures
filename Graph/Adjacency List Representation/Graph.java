@@ -342,6 +342,55 @@ public class Graph {
   }
 
   /**
+   * The getComponents method returns a string representation of all of the
+   * distinct components presented in a list format.
+   * @return A String representation of each of the components within the Graph
+   */
+  public String getComponents(){
+    int number = this.numConnectedComponents();
+    ArrayList<String> componentList = new ArrayList<String>(number);
+    for (Vertex v: this.getVertices()){
+      if (!v.isVisited()){
+        /*
+         * Adding the String returned from the nameDepthSearch method to the
+         *  componentList when passing Vertex variable v as the parameter.
+         */
+        componentList.add(nameDepthSearch(v));
+      }
+
+    }
+    String result = "";         // Instantiating an empty String to append to.
+    for (int i = 0; i < componentList.size(); i++) {
+      result += (i+1) + ": " + componentList.get(i) + "\n";
+    }
+
+    // Reset all Vertex object's visited filed to false.
+    setVerticesToNotVisited();
+
+    return result;
+  }
+
+  /**
+   * The nameDepthSearch method returns a String representation of a depth first
+   * search performed on the parameter vertex.
+   * @param x The Vertex object to perform the search on
+   * @return A String representation of the depth first search on the parameter
+   * variable
+   */
+  private String nameDepthSearch(Vertex x){
+    String s = "";
+    if(!x.isVisited()){
+      x.setVisited(true);
+      s += x.getName() + " ";
+      for (Vertex v: this.getAdjacencies(x)){
+        s += nameDepthSearch(v);
+      }
+    }
+
+    return s;
+  }
+  
+  /**
    * The setVerticesToNotVisited sets the visited class variable of all Vertex
    * objects within the Graph to false.
    */
