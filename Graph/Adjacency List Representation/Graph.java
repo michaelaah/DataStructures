@@ -194,8 +194,8 @@ public class Graph {
    * @param graph The Graph object to test if it is completely connected
    * @return True if all Vertex objects are connected within the Graph
    */
-  public boolean isConnected(Graph graph){
-    ArrayList<Vertex> vertexList = graph.getVertices();
+  public boolean isConnected(){
+    ArrayList<Vertex> vertexList = this.getVertices();
     // If the size of the arrayList is less than 2 then return true.
     if (vertexList.size() < 2){
       return true;
@@ -203,12 +203,10 @@ public class Graph {
 
     // Retrieve the first element of the vertexList ArrayList.
     Vertex vertex = vertexList.get(0);
-
+    // Call countVertices method and store return value.
     int count = countVertices(vertex);
-
-    for (Vertex node: vertexList){  // Loop over all Vertex objects in the list.
-      node.setVisited(false);   // Assign each object's visited field to false.
-    }
+    // Reset all Vertex object's visited filed to false.
+    setVerticesToNotVisited();
 
     return count == this.size;
   }
@@ -271,6 +269,7 @@ public class Graph {
 
     }
 
+    setVerticesToNotVisited();    // Reset all Vertex object's visited filed to false.
     Collections.sort(nameList);   // Sort the nameList variable alphabetically.
     String result = "";           // An empty String variable to append to.
 
@@ -304,6 +303,53 @@ public class Graph {
       }
     }
 
+  }
+  
+   /**
+   * The numConnectedComponents determines how many distinct connected
+   * components there are in the Graph. If all Vertex objects are connected
+   * so that all Vertex objects can be visited from any one Vertex, then this
+   * method would return 1.
+   * @return The number of distinct connected components within the Graph
+   */
+  public int numConnectedComponents(){
+    int numOfComponents = 0;
+    ArrayList<Vertex> vertexList = this.getVertices();
+    for (Vertex v: vertexList){
+      if (!v.isVisited()){
+        numOfComponents++;
+        depthFirstSearch(v);
+      }
+    }
+    // Reset all Vertex object's visited filed to false.
+    setVerticesToNotVisited();
+
+    return numOfComponents;
+  }
+
+  /**
+   * Method to perform a Depth First Search traversal of the Graph.
+   * @param v The Vertex to begin the Depth First Search from
+   */
+  private void depthFirstSearch(Vertex v){
+    if (!v.isVisited()){
+      v.setVisited(true);
+      for (Vertex x: this.getAdjacencies(v)){
+        depthFirstSearch(x);
+      }
+    }
+
+  }
+
+  /**
+   * The setVerticesToNotVisited sets the visited class variable of all Vertex
+   * objects within the Graph to false.
+   */
+  private void setVerticesToNotVisited(){
+    for (Vertex v: this.getVertices()){
+      v.setVisited(false);
+    }
+    
   }
 
 
