@@ -154,7 +154,7 @@ public class Graph {
             this.adjacencyList.containsKey(y)){
       /*
        * Retrieve the x adjacency list, the value in the HashMap, and remove
-       * y from the adjacency list. Then perform the
+       * y from the adjacency list. Then perform the same operations vice versa.
        */
       LinkedList<Vertex> xAdjList = this.adjacencyList.get(x);
       xAdjList.remove(y);
