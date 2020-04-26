@@ -1,5 +1,5 @@
 /**
- * The Vertex class describes the behavior of a Vertex object.
+ * The Vertex class below describes the behavior of a Vertex object.
  */
 public class Vertex {
 
@@ -17,7 +17,7 @@ public class Vertex {
     this.visited = false;
   }
 
-  // Constructor with only name field as n argument
+  // Constructor with only name field as an argument
   public Vertex(String name){
     this.name = name;
     this.value = 0;
