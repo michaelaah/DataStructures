@@ -240,11 +240,11 @@ public class DirectedGraph {
 
     for (Edge adjacent: this.diGraph.get(source)){
       if (adjacent.equals(destination)){
-        System.out.println(adjacent.getVertex().getName() + " equals " + destination.getName());
+        
         return true;
       }
       if (hasCycleDFS(adjacent.getVertex(),destination)){
-        System.out.println("Recursive adj equals destination");
+       
         return true;
       }
     }
@@ -313,17 +313,24 @@ public class DirectedGraph {
    * the source Vertex to the destination Vertex
    */
   public ArrayList<Vertex> dijkstra(Vertex source, Vertex destination){
-    LinkedList<Vertex> list = new LinkedList<Vertex>();
-    ArrayList<Vertex> pathList = new ArrayList<Vertex>();
-    buildTree(source);
+    if (!(this.diGraph.containsKey(source)) || !this.diGraph.containsKey(destination)){
+      throw new NoSuchElementException();
+    } else {
 
-    while (destination != null){
-      list.addFirst(destination);
-      destination = destination.getParent();
+      LinkedList<Vertex> list = new LinkedList<Vertex>();
+      ArrayList<Vertex> pathList = new ArrayList<Vertex>();
+      buildLeastPathTree(source);
+
+      while (destination != null) {
+        list.addFirst(destination);
+        destination = destination.getParent();
+      }
+      pathList.addAll(list);
+      resetParentLinks();
+      resetVisitedField();
+
+      return pathList;
     }
-    pathList.addAll(list);
-
-    return pathList;
   }
 
   /**
@@ -348,14 +355,17 @@ public class DirectedGraph {
         continue;
       }
       node.setVisited(true);
-      for (Vertex adjacent: this.getEdges(node)){
-        int dist = node.getDistance() + this.getWeight(node,adjacent);
-        if (adjacent.getDistance() > dist){
-          adjacent.setDistance(dist);
-          adjacent.setParent(node);
-          priorityQ.add(adjacent);
+      
+      for (Edge adjacent: this.diGraph.get(node)){
+        Vertex elem = adjacent.getVertex();
+        int dist = node.getDistance() + this.getWeight(node,elem);
+        if (elem.getDistance() > dist){
+          elem.setDistance(dist);
+          elem.setParent(node);
+          priorityQ.add(elem);
         }
       }
+
     }
 
   }
@@ -378,6 +388,16 @@ public class DirectedGraph {
     }
 
     return Integer.MIN_VALUE;
+  }
+  
+    /**
+   * The resetParentLinks method assigns each Vertex object's, within the DirectedGraph
+   * object, parent class variable to null.
+   */
+  private void resetParentLinks(){
+    for (Vertex k: this.getVertices()){
+      k.setParent(null);
+    }
   }
 
 }
