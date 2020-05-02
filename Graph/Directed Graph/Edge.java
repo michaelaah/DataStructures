@@ -4,7 +4,7 @@
  */
 public class Edge {
 
-  // Class variables
+  // Class Variables
   private Vertex vertex;
   private int cost;
 
