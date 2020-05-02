@@ -319,7 +319,7 @@ public class DirectedGraph {
 
       LinkedList<Vertex> list = new LinkedList<Vertex>();
       ArrayList<Vertex> pathList = new ArrayList<Vertex>();
-      buildLeastPathTree(source);
+      buildTree(source);
 
       while (destination != null) {
         list.addFirst(destination);
@@ -337,7 +337,7 @@ public class DirectedGraph {
    * The buildTree helper method contains the algorithm associated with Dijkstra's
    * algorithm. This method sets the parent class variable for each Vertex object
    * found to be in the shortest path from the source Vertex.
-   * @param source
+   * @param source The Vertex to build the path to
    */
   private void buildTree(Vertex source) {
     for (Vertex vertex : this.getVertices()) {
@@ -399,5 +399,6 @@ public class DirectedGraph {
       k.setParent(null);
     }
   }
+  
 
 }
