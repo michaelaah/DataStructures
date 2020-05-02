@@ -240,11 +240,9 @@ public class DirectedGraph {
 
     for (Edge adjacent: this.diGraph.get(source)){
       if (adjacent.equals(destination)){
-        
         return true;
       }
       if (hasCycleDFS(adjacent.getVertex(),destination)){
-       
         return true;
       }
     }
@@ -390,7 +388,7 @@ public class DirectedGraph {
     return Integer.MIN_VALUE;
   }
   
-    /**
+  /**
    * The resetParentLinks method assigns each Vertex object's, within the DirectedGraph
    * object, parent class variable to null.
    */
