@@ -159,30 +159,54 @@ public class MyLinkedList {
         this.head = null;
         this.tail = null;
     }
+    
+    /**
+     * The Contains method searches the LinkedList and returns true if the
+     * parameter Object is contained within the list.
+     * @param target The Object to search the LinkedList for
+     * @return True if the parameter Object is within the LinkedList
+     */
+    public boolean contains(Object target){
+        if (head.data == target){
+            return true;
+        }
+        if (head.next != null){
+            Node temp = head;
+            while (temp.next != null){
+                temp = temp.next;
+                if (temp.data == target){
+                    
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 
     // Nested Node class
     private class Node{
-        
+
         // Node Class Variables
         private Object data;
         private Node next;
         private Node previous;
-        
-        // No argument Constructor
+
+         // No Argument Constructor
         public Node(){
             data = null;
             next = null;
             previous = null;
         }
 
-        // Constructor with data class variable
+         // Constructor with data field variable as a parameter
         public Node(Object data){
             this.data = data;
             next = null;
             previous = null;
         }
 
-        // Class Setter and Getter methods
+        // Node class Setter and Getter methods
         public void setData(Object data){
             this.data = data;
         }
