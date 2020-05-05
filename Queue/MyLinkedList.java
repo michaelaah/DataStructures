@@ -162,23 +162,27 @@ public class MyLinkedList {
 
     // Nested Node class
     private class Node{
-
+        
+        // Node Class Variables
         private Object data;
         private Node next;
         private Node previous;
-
+        
+        // No argument Constructor
         public Node(){
             data = null;
             next = null;
             previous = null;
         }
 
+        // Constructor with data class variable
         public Node(Object data){
             this.data = data;
             next = null;
             previous = null;
         }
 
+        // Class Setter and Getter methods
         public void setData(Object data){
             this.data = data;
         }
