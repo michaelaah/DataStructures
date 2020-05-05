@@ -23,6 +23,10 @@ public class MyStack {
     public boolean isEmpty(){
         return this.theStack.isEmpty();
     }
+    
+    public boolean contains(Object obj){ 
+        return this.theStack.contains(obj); 
+    }
 
     public String toString(){
         String result = "";
