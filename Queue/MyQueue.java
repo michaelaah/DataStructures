@@ -22,6 +22,10 @@ public class MyQueue {
         }
         return this.theQueue.getTailData();
     }
+    
+    public boolean contains(Object obj){
+        return this.theQueue.contains(obj);
+    }
 
     public String toString(){
         String result = "";
