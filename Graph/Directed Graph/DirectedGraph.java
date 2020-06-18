@@ -303,8 +303,8 @@ public class DirectedGraph {
   }
 
   /**
-   * Dijkstra's algorithm is used to find the shorted path between two Vertex
-   * objects in this DirectedGraph object.
+   * Dijkstra's algorithm is used to find the shortest path between two Vertex
+   * objects in the DirectedGraph object.
    * @param source The Vertex object to begin the traversal from
    * @param destination The Vertex object to end the traversal at
    * @return An ArrayList of the Vertex objects in the shortest path from
@@ -389,8 +389,7 @@ public class DirectedGraph {
   }
   
   /**
-   * The resetParentLinks method assigns each Vertex object's, within the DirectedGraph
-   * object, parent class variable to null.
+   * The resetParentLinks method assigns each Vertex object's parent class variable to null.
    */
   private void resetParentLinks(){
     for (Vertex k: this.getVertices()){
