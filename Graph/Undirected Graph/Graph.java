@@ -358,6 +358,123 @@ public class Graph {
     }
 
   }
+  
+  // ****** Algorithms in this section are used to test for a Hamiltonian Path in this Graph ***** 
+      public boolean allVerticesPresent(ArrayList<Vertex> vList){
+        if (vList.size() != this.getVertices().size()){
+            return false;
+        } else {
+
+            for (int i = 0; i < this.getVertices().size(); i++) {
+                boolean found = false;
+                Vertex v = this.getVertices().get(i);
+                for (int j = 0; j < vList.size(); j++) {
+                    if(v.equals(vList.get(j))) {
+                        found = true;
+                        break;
+                    }
+                }
+                if(!found){
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    }
+  
+      public boolean distinctPosition(ArrayList<Vertex> vList){
+        for (int i = 0; i < vList.size(); i++) {
+            Vertex v = vList.get(i);
+            for (int j = 0; j < vList.size(); j++) {
+                if(i != j){
+                    if (v.equals(vList.get(j))){
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
+  
+      public boolean connectedEdgePath(ArrayList<Vertex> vList){
+        if (vList.size()<= 0){
+            return false;
+        } else {
+            for (int i = 0; i < vList.size() - 1; i++) {
+                Vertex a = vList.get(i);
+                Vertex b = vList.get(i+1);
+                if (! this.hasEdge(a,b)){
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    }
+  
+      public void getPath(Vertex v, ArrayList<Vertex> path){
+        if (!v.isVisited()){
+            v.setVisited(true);
+            path.add(v);
+            for (Vertex x: this.getAdjacencies(v)){
+                getPath(x, path);
+            }
+        }
+    }
+  
+      public ArrayList<Vertex> getHamPath(){
+
+        ArrayList<Vertex> pathList = new ArrayList<>();
+
+        for (int i = 0; i < this.getVertices().size(); i++) {
+
+            Vertex v = this.getVertices().get(i);
+            getPath(v,pathList);
+            setVerticesToNotVisited();
+
+            boolean connected     = connectedEdgePath(pathList);
+            boolean distinctIndex = distinctPosition(pathList);
+            boolean allPresent    = allVerticesPresent(pathList);
+
+            if (connected && distinctIndex && allPresent){
+                return pathList;
+
+            } else {
+                pathList.clear();
+            }
+        }
+
+        return null;
+    }
+  
+      public boolean hasHamPath(){
+
+        ArrayList<Vertex> pathList = new ArrayList<>();
+
+        for (int i = 0; i < this.getVertices().size(); i++) {
+
+            Vertex v = this.getVertices().get(i);
+            getPath(v,pathList);
+            setVerticesToNotVisited();
+
+            boolean connected     = connectedEdgePath(pathList);
+            boolean distinctIndex = distinctPosition(pathList);
+            boolean allPresent    = allVerticesPresent(pathList);
+
+            if (connected && distinctIndex && allPresent){
+                return true;
+
+            } else {
+                pathList.clear();
+            }
+        }
+
+        return false;
+    }
+  
+  // ****** Algorithms to detect a Hamiltonian Path in this Graph  end here ***** 
 
   /**
    * The getComponents method returns a string representation of all of the
