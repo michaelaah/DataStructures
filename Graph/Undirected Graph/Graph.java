@@ -40,8 +40,7 @@ public class Graph {
 
   /**
    * The addVertex method adds a given Vertex object to the Graph object if
-   * it has not already been added before. Else, the method throws a
-   * keyAlreadyExistsException.
+   * it has not already been added before.
    * @param v The Vertex object to add to the Graph
    */
   public void addVertex(Vertex v){
@@ -50,19 +49,26 @@ public class Graph {
      * yet, put the Vertex object into the HashMap, create its own
      * LinkedList associated value, and increment the size class variable.
      */
-    if (!(this.adjacencyList.containsKey(v))){
-      this.adjacencyList.put(v, new LinkedList<Vertex>());
-      this.size++;
+    if (!isPresent(v)){
+            this.adjacencyList.put(v, new LinkedList<Vertex>());
+            this.size++;
 
-    } else {
-      /*
-       * Else, this Vertex object has already been added, throw the
-       * KeyAlreadyExistsException.
-       */
-      throw new KeyAlreadyExistsException();
-    }
+        }
 
   }
+  
+      public boolean isPresent(Vertex v){
+        ArrayList<Vertex> vList = getVertices();
+        for (int i = 0; i < vList.size(); i++) {
+            Vertex w = vList.get(i);
+            if (w.equals(v)) {
+                return true;
+
+            }
+        }
+        return false;
+    }
+  
 
   /**
    * The getVertices method returns an ArrayList of all the Vertex objects
@@ -188,6 +194,17 @@ public class Graph {
     }
 
   }
+  
+    /**
+     * Method determines if the two parameters have an edge between them.
+     * @param v The first Vertex
+     * @param w The second Vertex
+     * @return True if an edge exists between these vertices, otherwise false
+     */
+    public boolean hasEdge(Vertex v, Vertex w){
+        LinkedList<Vertex> adjList = this.getAdjacencies(v);
+        return adjList.contains(w);
+    }
 
   /**
    * The isConnected method takes a graph as input and determines if
