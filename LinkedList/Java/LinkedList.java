@@ -2,13 +2,13 @@
 
 public class LinkedList {
 
-    // MyLinkedList class instance variables
+    // LinkedList class instance variables
     private Node head;
     private Node tail;
 
     /**
-     * No argument MyLinkedList constructor, sets the head and tail references
-     * to null.
+     * No argument MyLinkedList constructor, sets the head and tail
+     * references to null.
      */
     public LinkedList(){
         head = null;
@@ -17,7 +17,7 @@ public class LinkedList {
 
     /**
      * The getHeadData returns the data stored in the head node.
-     * @return the data stored in the head reference instance variable
+     * @return the data stored in the head reference instance variable.
      */
     public Object getHeadData(){
         return this.head.data;
@@ -25,7 +25,7 @@ public class LinkedList {
 
     /**
      * The getTailData returns the data stored in the tail node.
-     * @return the data stored in the tail reference instance variable
+     * @return the data stored in the tail reference instance variable.
      */
     public Object getTailData(){
         return this.tail.data;
@@ -33,8 +33,8 @@ public class LinkedList {
 
     /**
      * The isEmpty method returns true if both the head and tail references 
-     * are null, other wise it returns false
-     * @return true if class instance variables are null, otherwise false
+     * are null, other wise it returns false.
+     * @return true if class instance variables are null, otherwise false.
      */
     public boolean isEmpty(){
         return (head == null && tail == null);
@@ -45,7 +45,7 @@ public class LinkedList {
      * object.
      * @param data The value of the new node to be stored in the LinkedList
      * object.
-     * @return True if the node was successfully added, false otherwise
+     * @return True if the node was successfully added, false otherwise.
      */
     public boolean addFirst(Object data){
         Node newNode = new Node(data);
@@ -66,10 +66,10 @@ public class LinkedList {
     }
 
   /**
-     * The addLast method adds an new node with a given parameter at the end
-     * of the LinkedList object.
-     * @param data The value to be added to the end of the LinkedList object
-     * @return True if the value was added successfully, otherwise false
+     * The addLast method adds an new node with a given parameter at the
+     * end of the LinkedList object.
+     * @param data The value to be added to the end of the LinkedList object.
+     * @return True if the value was added successfully, otherwise false.
      */
     public boolean addLast(Object data){
         Node newNode = new Node(data);
@@ -92,7 +92,7 @@ public class LinkedList {
     /**
      * The removeFirst method removes a node from the front of the LinkedList
      * object and returns that node to the client.
-     * @return The node at the front of the Linkedlist object
+     * @return The node at the front of the Linkedlist object.
      */
     public Node removeFirst(){
         if(head == null){
@@ -111,9 +111,9 @@ public class LinkedList {
     }
 
      /**
-     * The removeLast method removes a node from the back of the LinkedList
+     * The removeLast method removes a node from the back of the LinkedList.
      * object and returns that node to the client.
-     * @return The node at the back of the Linkedlist object
+     * @return The node at the back of the Linkedlist object.
      */
     public Node removeLast(){
         if(tail == null){
@@ -135,7 +135,7 @@ public class LinkedList {
     /**
      * The toString method provides a String representation of the LinkedList
      * object.
-     * @return A String representation of the LinkedList object
+     * @return A String representation of the LinkedList object.
      */
     public String toString() {
         String result = "";
@@ -161,10 +161,10 @@ public class LinkedList {
     }
     
     /**
-     * The Contains method searches the LinkedList and returns true if the
-     * parameter Object is contained within the list.
-     * @param target The Object to search the LinkedList for
-     * @return True if the parameter Object is within the LinkedList
+     * The Contains method searches the LinkedList and returns true
+     * if the parameter Object is contained within the list.
+     * @param target The Object to search the LinkedList for.
+     * @return True if the parameter Object is within the LinkedList.
      */
     public boolean contains(Object target){
         if (head.data == target){
@@ -199,7 +199,7 @@ public class LinkedList {
             previous = null;
         }
 
-         // Constructor with data field variable as a parameter
+         // Constructor with data field variable as a parameter.
         public Node(Object data){
             this.data = data;
             next = null;
