@@ -3,8 +3,7 @@
   a resizeable array list. The implementation of these functions can be found in the ArrayList.cpp file.
  */
 
-#ifndef __ARRAYLIST_HEADER
-#define __ARRAYLIST_HEADER
+#pragma once
 
 class ArrayList{
     public:
@@ -28,5 +27,3 @@ class ArrayList{
         void    reAlloc();
         void    deAlloc();
 };
-
-#endif

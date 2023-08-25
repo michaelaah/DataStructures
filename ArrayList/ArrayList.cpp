@@ -7,7 +7,7 @@
  * In both cases, after having allocated a new array, all elements in the original array are copied over into the 
  * new array and the reference to the class's array is updated to be this new array.
  */
-
+#pragma once
 #include "ArrayList.h"
 
 /**
